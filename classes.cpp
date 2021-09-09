@@ -20,6 +20,12 @@ class MyClass{
             den = 1;
         }
 
+        MyClass(int num,int den){
+            cout<<"Fraction done with constructer"<<endl;
+            this->num = num;
+            this->den = den;
+        }
+
         void setFraction(){
             cout<<"NUM: ";
             cin>>num;
@@ -34,11 +40,14 @@ class MyClass{
 };
 
 int main(){
-    MyClass c1;
+    MyClass c1, c2(3,5);
     c1.setName();
     c1.getName();
 
     c1.setFraction();
     c1.getFraction();
+
+    c2.getFraction();
+
     return 0;
 }
