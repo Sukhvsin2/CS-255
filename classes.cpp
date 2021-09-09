@@ -22,8 +22,10 @@ class MyClass{
 
         MyClass(int num,int den){
             cout<<"Fraction done with constructer"<<endl;
-            this->num = num;
-            this->den = den;
+            if(den != 0) {
+                this->num = num;
+                this->den = den;
+            }else cout<<"ERROR: Can't set den 0"<<endl;
         }
 
         void setFraction(){
