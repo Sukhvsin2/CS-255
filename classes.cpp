@@ -29,9 +29,10 @@ class MyClass{
         }
 
         void setFraction(){
-            cout<<"NUM: ";
+            cout<<"NUM/DEN: ";
             cin>>num;
-            cout<<"DEN: ";
+            char s;
+            cin>>s;
             cin>>den;
         }
 
