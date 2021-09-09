@@ -8,6 +8,7 @@ class MyClass{
         int num, den;
     public:
         void setName(){
+            cout<<"NAME: ";
             cin>>name;
         }
         void getName(){
