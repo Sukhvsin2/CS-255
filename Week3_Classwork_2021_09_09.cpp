@@ -23,7 +23,7 @@ public:
     void addTo(const Fraction &obj){
         int d = obj.den, n = obj.num;
 
-        int temp = this->num;
+
         this->num *= d;
         n *= this->den;
         this->num += n;
@@ -37,6 +37,14 @@ public:
         n *= this->den;
         this->num -= n;
         this->den *= d;
+    }
+
+    Fraction mul(const Fraction &obj){
+        Fraction r;
+        r.den = this->den * obj.den;
+        r.num = this->num * obj.num;
+
+        return r;
     }
 
 };
@@ -98,8 +106,12 @@ int main(){
     f1.Print();
 
 
-    cout<<"\n\n\n";
+    /**cout<<"\n\n\n";
     f1.subTo(f2);
     f1.Print();
+**/
+    cout<<"\n\n";
+    Fraction result = f1.mul(f2);
+    result.Print();
     return 0;
 }
