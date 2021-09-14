@@ -30,6 +30,15 @@ public:
         this->den *= d;
     }
 
+    void subTo(const Fraction &obj){
+        int d = obj.den, n = obj.num;
+
+        this->num *= d;
+        n *= this->den;
+        this->num -= n;
+        this->den *= d;
+    }
+
 };
 
 //class Fraction definition
@@ -84,8 +93,13 @@ int main(){
     cout<<"\n\n\n";
     f1.Print();
 
-    cout<<"\n\n\n";
+    cout<<"\n\n\nF1 Updated:";
     f1.addTo(f2);
+    f1.Print();
+
+
+    cout<<"\n\n\n";
+    f1.subTo(f2);
     f1.Print();
     return 0;
 }
