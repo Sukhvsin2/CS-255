@@ -14,13 +14,13 @@ public:
 	void Print()const; //method that will output the object
 	void Input();
 	//add a MultBy method
-    void multBy(Fraction &obj){
+    void multBy(const Fraction &obj){
         int n2 = obj.num, d2 = obj.den;
         this->den *= d2;
         this->num *= n2;
     }
 
-    void addTo(Fraction &obj){
+    void addTo(const Fraction &obj){
         int d = obj.den, n = obj.num;
 
         int temp = this->num;
