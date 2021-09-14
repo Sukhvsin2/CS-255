@@ -20,6 +20,16 @@ public:
         this->num *= n2;
     }
 
+    void addTo(Fraction &obj){
+        int d = obj.den, n = obj.num;
+
+        int temp = this->num;
+        this->num *= d;
+        n *= this->den;
+        this->num += n;
+        this->den *= d;
+    }
+
 };
 
 //class Fraction definition
@@ -73,5 +83,9 @@ int main(){
     f1.multBy(f2);
     cout<<"\n\n\n";
     f1.Print();
-	return 0;
+
+    cout<<"\n\n\n";
+    f1.addTo(f2);
+    f1.Print();
+    return 0;
 }
