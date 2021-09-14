@@ -15,8 +15,9 @@ public:
 	void Input();
 	//add a MultBy method
     void multBy(Fraction obj){
-        int n1 = this->num, d1 = this->den, n2 = obj.num, d2 = obj.den;
-
+        int n2 = obj.num, d2 = obj.den;
+        this->den *= d2;
+        this->num *= n2;
     }
 
 };
@@ -70,5 +71,7 @@ int main(){
 
 	//multiplying two fractions
     f1.multBy(f2);
+    cout<<"\n\n\n";
+    f1.Print();
 	return 0;
 }
