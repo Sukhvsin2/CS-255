@@ -26,7 +26,10 @@ public:
     void setDen(int d){
         den = d == 0 ? 1 : d;
     }
-
+    void setData(int n, int d){
+        num = n;
+        den = d == 0 ? 1 : d;
+    }
 };
 
 //class Fraction definition
@@ -70,6 +73,9 @@ int main(){
     f1.setNum(1);
     f1.setDen(-100);
     // calling by getters
-    cout<<f1.getNum()<<"/"<<f1.getDen();
+    cout<<f1.getNum()<<"/"<<f1.getDen()<<endl;
+
+    f1.setData(111,222);
+    cout<<f1.getNum()<<"/"<<f1.getDen()<<endl;
 	return 0;
 }
