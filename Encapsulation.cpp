@@ -30,6 +30,14 @@ public:
         num = n;
         den = d == 0 ? 1 : d;
     }
+
+    Fraction operator * (Fraction obj){
+        Fraction res;
+        res.num = this->num * obj.num;
+        res.den = this->den * obj.den;
+        return res;
+    }
+
 };
 
 //class Fraction definition
@@ -77,5 +85,11 @@ int main(){
 
     f1.setData(111,222);
     cout<<f1.getNum()<<"/"<<f1.getDen()<<endl;
+
+    Fraction f2(2,2);
+
+    // Over loading operator
+    Fraction f3 = f1 * f2;
+    f3.print();
 	return 0;
 }
