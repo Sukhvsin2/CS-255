@@ -31,7 +31,7 @@ public:
         den = d == 0 ? 1 : d;
     }
 
-    Fraction operator * (Fraction obj){
+    Fraction operator * (Fraction &obj){
         Fraction res;
         res.num = this->num * obj.num;
         res.den = this->den * obj.den;
