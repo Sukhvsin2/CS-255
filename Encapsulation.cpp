@@ -30,13 +30,21 @@ public:
         num = n;
         den = d == 0 ? 1 : d;
     }
-
+/**
     Fraction operator * (Fraction &obj){
         Fraction res;
         res.num = this->num * obj.num;
         res.den = this->den * obj.den;
         return res;
+    }**/
+
+    friend Fraction operator * (Fraction &obj1, Fraction &obj2){
+        Fraction res;
+        res.num = obj1.num * obj2.num;
+        res.den = obj1.den * obj2.den;
+        return res;
     }
+
 
 };
 
