@@ -45,6 +45,35 @@ public:
         return res;
     }
 
+    /**
+    Fraction operator + (Fraction &obj1){
+        Fraction res;
+        res.num = obj1.num * this->den + this->num * obj1.den;
+        res.den = this->den + obj.den;
+        return res;
+    }**/
+
+    friend Fraction operator + (Fraction &obj1, Fraction &obj2){
+        Fraction res;
+        res.num = obj1.num * obj2.den + obj2.num * obj1.den;
+        res.den = obj1.den * obj2.den;
+        return res;
+    }
+
+    /**
+    Fraction operator - (Fraction &obj1){
+        Fraction res;
+        res.num = obj1.num * this->den - this->num * obj1.den;
+        res.den = this->den - obj.den;
+        return res;
+    }**/
+
+    friend Fraction operator - (Fraction &obj1, Fraction &obj2){
+        Fraction res;
+        res.num = obj1.num * obj2.den - obj2.num * obj1.den;
+        res.den = obj1.den - obj2.den;
+        return res;
+    }
 
 };
 
@@ -84,20 +113,27 @@ void Fraction::Input(){
 int main(){
 
 	Fraction f1; //Instantiates the Fraction class
-	f1.print();
 
     f1.setNum(1);
-    f1.setDen(-100);
+    f1.setDen(100);
     // calling by getters
     cout<<f1.getNum()<<"/"<<f1.getDen()<<endl;
 
-    f1.setData(111,222);
+    f1.setData(1,100);
     cout<<f1.getNum()<<"/"<<f1.getDen()<<endl;
 
     Fraction f2(2,2);
 
     // Over loading operator
     Fraction f3 = f1 * f2;
+    f3.print();
+
+// Over loading operator
+    f3 = f1 + f2;
+    f3.print();
+
+// Over loading operator
+    f3 = f1 - f2;
     f3.print();
 	return 0;
 }
