@@ -21,7 +21,7 @@ public:
 	//Fraction operator*(const Fraction& right)const;
 	friend Fraction operator*(const Fraction& left, const Fraction& right);
     friend ostream& operator<<(ostream &c, const Fraction &obj){
-        c<<"Overloading << operator: "<<obj.num<<"/"<<obj.den;
+        c<<obj.num<<"/"<<obj.den;
         return c;
     }
     friend istream& operator>>(istream &c, Fraction &obj){
@@ -34,9 +34,11 @@ public:
 
     }
 
-    //Fraction& operator<(const Fraction &a){
-     //   if(this->den > a.den)
-    //}
+    bool operator<(const Fraction &obj){
+        int num1 = this->num * obj.den;
+        int num2 = this->den * obj.num;
+        return num1 < num2;
+    }
 
 };
 
@@ -113,7 +115,7 @@ Fraction operator*(const Fraction& left, const Fraction& right){
 
 int main(){
 
-	Fraction f1(2,4); //Instantiates the Fraction class
+	Fraction f1(1,4); //Instantiates the Fraction class
 	Fraction f2(1,2);
 	Fraction result;
 	//result = f1.Multiply(f2);
@@ -121,7 +123,7 @@ int main(){
 	result.Print(); cout << endl;
 
 	cout << f1 << endl;
-    cout<< (f1==f2);
-
+    cout<< (f1==f2)<<endl;
+    cout << f1<<"<"<<f2<<": "<<(f1<f2);
 	return 0;
 }
