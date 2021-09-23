@@ -35,6 +35,19 @@ public:
         this->num += this->den;
         return temp;
     }
+    Fraction operator++(){
+        this->num += this->den;
+        return *this;
+    }
+    Fraction operator--(int){
+        Fraction temp = *this;
+        this->num -= this->den;
+        return temp;
+    }
+    Fraction operator--(){
+        this->num -= this->den;
+        return *this;
+    }
 };
 
 //class Fraction definition
@@ -149,6 +162,11 @@ int main(){
 	Fraction f2(1,2);
 
     cout<<"f1++: "<<f1++<<endl;
+    cout<<"After value: ";
+    f1.Print();
+
+    cout<<endl<<"\n************"<<endl;
+    cout<<"f1--: "<<f1--<<endl;
     cout<<"After value: ";
     f1.Print();
 	return 0;
