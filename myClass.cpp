@@ -4,6 +4,7 @@ using namespace std;
 
 class Money{
     private:
+    	// decalaring variables
         int dollar, cents;
 
     public:
@@ -46,13 +47,24 @@ class Money{
             }
         }
         void operator -(Money &obj){
-            if(this->cents + obj.cents == 100){
-                this->dollar -= obj.dollar - 1;
-                this->cents > obj.cents ? this->cents -= obj.cents: obj.cents -= this->cents;
-             }else{
-                this->cents -= obj.cents;
-                this->dollar -= obj.dollar;
-            }
+            if(this->dollar > obj.dollar){
+				this->dollar -= obj.dollar;
+				if(this->cents > obj.cents){
+					this->cents -= obj.cents;
+				}else{
+					this->cents = 100 - (obj.cents - this->cents);
+					this->dollar--;
+				}
+			}else{
+				this->dollar = obj.dollar - this->dollar;
+				if(this->cents > obj.cents){
+					this->cents = 100-(this->cents - obj.cents);
+					this->dollar--;
+				}else{
+					this->cents = 100 - (obj.cents - this->cents);
+					this->dollar--;
+				}
+			}
         }
         bool operator==(Money &obj){
         	if(this->dollar == obj.dollar && this->cents) return true;
@@ -97,13 +109,19 @@ class Money{
 			return *this;
 		}
         void printMoney(){
-            cout<<"Your Money: "<<this->dollar<<"."<<this->cents<<endl;
+            cout<<"Your Money: "<<this->dollar<<".";
+            if (this->cents < 10) cout<<"0"<<this->cents<<endl;
+            else cout<<this->cents<<endl;
         }
 };
 
 int main(){
     Money m1, m2;
     int d,c;
+    
+    cin>>m1>>m2;
+    m1-m2;
+    m1.printMoney();
     
 	/**
     char temp;
