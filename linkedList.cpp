@@ -18,13 +18,13 @@ class LinkedList{
         LinkedList(){
             head = nullptr;
         }
-        void insBegin(int data){
+        void insert(int data){
             Node* newNode = new Node(data);
             Node* temp = head;
             newNode->ptr = temp;
             head = newNode;
         }
-        void ins(int d){
+        void append(int d){
             Node *newNode = new Node(d);
             if(head == nullptr){
                 head = newNode;
@@ -47,10 +47,10 @@ class LinkedList{
 
 int main(){
     LinkedList l1;
-    l1.ins(10);
-    l1.ins(20);
-    l1.ins(30);
-    l1.insBegin(90);
+    l1.append(10);
+    l1.append(20);
+    l1.append(30);
+    l1.insert(90);
     l1.print();
     return 0;
 }
