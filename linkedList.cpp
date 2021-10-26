@@ -36,6 +36,26 @@ class LinkedList{
             }
             temp->ptr = newNode;
         }
+		Node* find(int key){
+			Node* temp = head;
+			int counter = 0;
+			while(temp != nullptr){
+				counter++;
+				if(temp->data == key){
+					cout<<"\n"<<key<<" Found at: "<<counter;
+					return temp;
+				}
+				temp = temp->ptr;
+			}
+			cout<<"\nError: No data in the linkedList!"<<endl;
+		}
+		
+		void deletebeg(){
+			Node* temp = head;
+			head = head->ptr;
+			delete temp;
+		}
+
         void print(){
             Node *temp = head;
             while(temp != nullptr){
@@ -51,6 +71,9 @@ int main(){
     l1.append(20);
     l1.append(30);
     l1.insert(90);
-    l1.print();
+	l1.deletebeg();
+	l1.print();
+	//Node* res = l1.find(20);
+	//cout<<"\nCheck: "<<res->data;
     return 0;
 }
