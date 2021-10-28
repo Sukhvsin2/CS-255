@@ -49,12 +49,28 @@ class LinkedList{
 			}
 			cout<<"\nError: No data in the linkedList!"<<endl;
 		}
-		
+
 		void deletebeg(){
 			Node* temp = head;
 			head = head->ptr;
 			delete temp;
 		}
+
+         void deleteEnd(){
+            Node *temp = head, *prev;
+            if(head==nullptr || head->ptr==nullptr){
+                cout<<"List is Empty";
+                delete head;
+                head = nullptr;
+                return;
+            }
+            while(temp->ptr!=nullptr){
+                prev=temp;
+                temp=temp->ptr;
+            }
+            prev->ptr = nullptr;
+            delete temp;
+        }
 
         void print(){
             Node *temp = head;
@@ -68,10 +84,7 @@ class LinkedList{
 int main(){
     LinkedList l1;
     l1.append(10);
-    l1.append(20);
-    l1.append(30);
-    l1.insert(90);
-	l1.deletebeg();
+	l1.deleteEnd();
 	l1.print();
 	//Node* res = l1.find(20);
 	//cout<<"\nCheck: "<<res->data;
