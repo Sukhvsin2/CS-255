@@ -72,6 +72,26 @@ class LinkedList{
             delete temp;
         }
 
+        void insertOrder(int pos, int item){
+            Node *temp = head, *prev = head;
+            int i=0;
+            if(temp == nullptr){
+                cout<<"Head is Null";
+                return;
+            }else{
+                while(temp != nullptr && i < pos-1){
+                    i++;
+                    prev = temp;
+                    temp = temp->ptr;
+                }
+                Node *newNode = new Node(item);
+                prev->ptr = newNode;
+                newNode->ptr = temp;
+
+            }
+
+        }
+
         void print(){
             Node *temp = head;
             while(temp != nullptr){
@@ -84,7 +104,9 @@ class LinkedList{
 int main(){
     LinkedList l1;
     l1.append(10);
-	l1.deleteEnd();
+    l1.append(20);
+    l1.append(30);
+    l1.insertOrder(2, 50);
 	l1.print();
 	//Node* res = l1.find(20);
 	//cout<<"\nCheck: "<<res->data;
