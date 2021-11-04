@@ -72,7 +72,7 @@ class LinkedList{
             delete temp;
         }
 
-        void insertOrder(int pos, int item){
+        void insertAt(int pos, int item){
             Node *temp = head, *prev = head;
             int i=0;
             if(temp == nullptr){
@@ -92,6 +92,24 @@ class LinkedList{
 
         }
 
+        void insertOrder(int data){
+            Node *curr = head, *prev = curr;
+            Node *newNode = new Node(data);
+            if(curr != nullptr && data < curr->data){
+                if(curr->data == data) return;
+                head = newNode;
+                newNode->ptr = curr;
+            }else{
+                while(curr != nullptr && data >= curr->data){
+                    if(curr->data == data) return;
+                    prev = curr;
+                    curr = curr->ptr;
+                }
+                prev->ptr = newNode;
+                newNode->ptr = curr;
+            }
+        }
+
         void print(){
             Node *temp = head;
             while(temp != nullptr){
@@ -106,8 +124,11 @@ int main(){
     l1.append(10);
     l1.append(20);
     l1.append(30);
-    l1.insertOrder(2, 50);
-	l1.print();
+//    l1.insertAt(2, 50);
+    l1.insertOrder(-3);
+    l1.insertOrder(10);
+
+    l1.print();
 	//Node* res = l1.find(20);
 	//cout<<"\nCheck: "<<res->data;
     return 0;
