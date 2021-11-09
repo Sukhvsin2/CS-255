@@ -8,36 +8,61 @@ class Money{
         int dollar, cents;
 
     public:
-        Money(){
+    	Money();
+    	void setDollar(int dollar);
+    	void setCents(int cents);
+    	int getDollar();
+    	int getCents();
+    	friend istream& operator>>(istream &s, Money &obj);
+    	friend ostream& operator<<(ostream &s, Money &obj);
+    	void operator +(Money &obj);
+    	void operator -(Money &obj);
+    	bool operator <(Money &obj);
+    	bool operator >(Money &obj);
+    	bool operator ==(Money &obj);
+    	bool operator <=(Money &obj);
+    	bool operator >=(Money &obj);
+    	bool operator !=(Money &obj);
+    	Money operator ++(int);
+    	Money operator --(int);
+    	Money operator ++();
+    	Money operator --();
+    	void printMoney();
+    	
+};
+
+
+    	
+        Money::Money(){
             this->dollar = this->cents = 0;
         }
-        void setDollar(int dollar){
+        void Money::setDollar(int dollar){
             this->dollar = dollar;
         }
 
-        void setCents(int cents){
+        void Money::setCents(int cents){
             this->cents = cents;
         }
 
-        int getDollar(){
+        int Money::getDollar(){
             return this->dollar;
         }
 
-        int getCents(){
+        int Money::getCents(){
             return this->cents;
         }
         
-        friend istream& operator>>(istream &s, Money &obj){
+        istream& operator>>(istream &s, Money &obj){
         	char temp;
         	s>>obj.dollar>>temp>>obj.cents;
 		}
 		
 		
-        friend ostream& operator<<(ostream &s, Money &obj){
+        ostream& operator<<(ostream &s, Money &obj){
         	s<<obj.dollar<<"."<<obj.cents;
 		}
 
-        void operator +(Money &obj){
+        void Money::operator +(Money &obj){
             if(this->cents + obj.cents == 100){
                 this->dollar += obj.dollar + 1;
                 this->cents = 0;
@@ -46,7 +71,7 @@ class Money{
                 this->dollar += obj.dollar;
             }
         }
-        void operator -(Money &obj){
+        void Money::operator -(Money &obj){
             if(this->dollar > obj.dollar){
 				this->dollar -= obj.dollar;
 				if(this->cents > obj.cents){
@@ -66,54 +91,53 @@ class Money{
 				}
 			}
         }
-        bool operator==(Money &obj){
+        bool Money::operator==(Money &obj){
         	if(this->dollar == obj.dollar && this->cents) return true;
         	return false;
 		}
-		bool operator<(Money &obj){
+		bool Money::operator<(Money &obj){
         	if(this->dollar < obj.dollar) return true;
         	return false;
 		}
-		bool operator>(Money &obj){
+		bool Money::operator>(Money &obj){
         	if(this->dollar > obj.dollar) return true;
         	return false;
 		}
-		bool operator<=(Money &obj){
+		bool Money::operator<=(Money &obj){
         	if(this->dollar <= obj.dollar) return true;
         	return false;
 		}
-		bool operator>=(Money &obj){
+		bool Money::operator>=(Money &obj){
         	if(this->dollar >= obj.dollar) return true;
         	return false;
 		}
-		bool operator!=(Money &obj){
+		bool Money::operator!=(Money &obj){
         	if(this->dollar != obj.dollar || this->cents != obj.cents) return false;
         	return true;
 		}
-		Money operator++(int){
+		Money Money::operator++(int){
 			Money temp = *this;
 			this->dollar += 1;
 			return temp;
 		}
-		Money operator--(int){
+		Money Money::operator--(int){
 			Money temp = *this;
 			this->dollar -= 1;
 			return temp;
 		}
-		Money operator++(){
+		Money Money::operator++(){
 			this->dollar += 1;
 			return *this;
 		}
-		Money operator--(){
+		Money Money::operator--(){
 			this->dollar -= 1;
 			return *this;
 		}
-        void printMoney(){
+        void Money::printMoney(){
             cout<<"Your Money: "<<this->dollar<<".";
             if (this->cents < 10) cout<<"0"<<this->cents<<endl;
             else cout<<this->cents<<endl;
         }
-};
 
 int main(){
     Money m1, m2;

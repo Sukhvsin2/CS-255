@@ -109,13 +109,23 @@ class LinkedList{
                 newNode->ptr = curr;
             }
         }
-
+        void reverseLinkedList(){
+			Node* temp = head, *prev = nullptr, *next = temp;
+			while(temp != nullptr){
+			    next = next->ptr;
+			    temp->ptr = prev;
+			    prev = temp;
+			    temp = next;
+			}
+			head = prev;
+		}
         void print(){
             Node *temp = head;
             while(temp != nullptr){
                 cout<<temp->data<<" ";
                 temp = temp->ptr;
             }
+            cout<<"\n\n";
         }
 };
 
@@ -124,12 +134,9 @@ int main(){
     l1.append(10);
     l1.append(20);
     l1.append(30);
-//    l1.insertAt(2, 50);
-    l1.insertOrder(-3);
-    l1.insertOrder(10);
-
-    l1.print();
-	//Node* res = l1.find(20);
-	//cout<<"\nCheck: "<<res->data;
+	l1.print();
+	cout<<"reverseLinkedList"<<endl;
+	l1.reverseLinkedList();
+	l1.print();
     return 0;
 }
