@@ -70,7 +70,7 @@ LinkedList& LinkedList::operator=(const LinkedList l){
 	//rebuild a new list for the calling object based upon the contents of the parameter
 	Node *temp = l.head;
     int x;
-    bool checkPoint;
+    bool checkPoint = true;
     while (temp != nullptr && checkPoint)
     {
         x = temp->data;
@@ -151,10 +151,11 @@ int main() {
     	l1.Insert(58);
     	l1.Insert(-1);
     	cout<<"Before L1: ";
-    	l1 = l1;
+    	//l1 = l1;
     	l1.Print();
     	
-    	LinkedList l2(l1);
+    	LinkedList l2;
+    	l2.Insert(-100);
     	
     	
     	cout<<"L2: "; l2.Print();
@@ -162,7 +163,12 @@ int main() {
     	cout<<"After Removing 2 from L1: ";
     	l1.Print();
     	
+    	cout<<"\n\nl2=l1: ";
+    	l2 = l1;
+    	l2.Print();
+    	
 	}
 	
 	return 0;
 }
+
