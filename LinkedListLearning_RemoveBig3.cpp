@@ -68,8 +68,16 @@ LinkedList& LinkedList::operator=(const LinkedList l){
 	//make sure calling object and parameter are not the same list then
 	//deallocate calling operator then 
 	//rebuild a new list for the calling object based upon the contents of the parameter
-	
-	
+	Node *temp = l.head;
+    int x;
+    bool checkPoint;
+    while (temp != nullptr && checkPoint)
+    {
+        x = temp->data;
+        checkPoint = this->Insert(x);
+        temp = temp->next;
+    }
+    return *this;
 }
 LinkedList::~LinkedList(){
 	//deallocate each item in the list and reset head to nullptr
@@ -143,6 +151,7 @@ int main() {
     	l1.Insert(58);
     	l1.Insert(-1);
     	cout<<"Before L1: ";
+    	l1 = l1;
     	l1.Print();
     	
     	LinkedList l2(l1);
@@ -153,9 +162,7 @@ int main() {
     	cout<<"After Removing 2 from L1: ";
     	l1.Print();
     	
-    	
 	}
 	
 	return 0;
 }
-
