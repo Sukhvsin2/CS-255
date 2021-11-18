@@ -13,6 +13,7 @@ class Node{
 
 class BinaryTree{
     Node *root;
+    int level;
     bool insertNode(int data, Node *&root){
         if(root == nullptr){
             Node *newNode = new Node();
@@ -52,9 +53,19 @@ class BinaryTree{
         }
 
     }
+    void treeDepth(){
+        Node *temp = root;
+        while(temp != nullptr){
+            if(temp->left != nullptr && temp->right == nullptr) temp = temp->left;
+            else if(temp->left == nullptr && temp->right != nullptr) temp = temp->right;
+            else temp = temp->left;
+            level++;
+        }
+    }
     public:
         BinaryTree(){
             root = nullptr;
+            this->level = 0;
         }
         bool insert(int data){
             return insertNode(data, root);
@@ -72,6 +83,12 @@ class BinaryTree{
             Node *temp = searchNode(data, root);
             if(temp) cout<<"Found it: "<<temp<<endl;
             else cout<<"Nope!";
+        }
+
+        int treeLevel(){
+            cout<<"before"<<level<<endl;
+            treeDepth();
+            return level;
         }
         /**void insert(int data){
             Node *temp = root;
@@ -110,5 +127,7 @@ int main(){
     B.postfix();
     cout<<endl;
     B.search(1000);
+    cout<<"\n\nDepth: "<<B.treeLevel();
+
     return 0;
 }
